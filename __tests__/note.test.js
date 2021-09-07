@@ -15,5 +15,17 @@ test("save new note", () => {
 
     const foundNote = new Note().find(note.id);
     expect(foundNote.id).toEqual(expect.any(Number));
+
+    //clean-up - should be using mock
     note.destroy();
+});
+
+test("destroy note", () => {
+    const note = new Note('Sample Title 01','Lorem ipsum dolar sit amet.');
+    const noteID = note.id;
+    note.save();
+    note.destroy();
+    
+    const foundRecord = new Note().find(noteID);
+    expect(foundRecord).toBe(false);
 });

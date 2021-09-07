@@ -12,6 +12,9 @@ test("save new record", () => {
 
     const foundRecord = new Record().find(record.id);
     expect(foundRecord.id).toEqual(expect.any(Number));
+
+    //clean-up, i should be using mock
+    record.destroy();
 });
 
 test("update new record", () => {
@@ -23,6 +26,9 @@ test("update new record", () => {
 
     const foundRecord = new Record().find(record.id);
     expect(foundRecord.title).toBe('Sample Title');
+
+    //clean-up, i should be using mock
+    record.destroy();
 });
 
 test("destroy record", () => {
